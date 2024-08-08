@@ -19,7 +19,11 @@
             tu IMC</button>
 
         @if (imc){
-        <h3>Tu IMC es: {{imc}}</h3>
+            <div class="mt-5 p-8 rounded-lg flex flex-col items-center" [style.color]="color" [style.background]="bg_color">
+                <h3 class="mt-2" > <strong>Tu IMC es: {{imc}}</strong></h3>
+                <h3>{{error}}</h3>
+            </div>
+        
         } @else {
         <h3 class="text-red-500 mt-2">{{error}} </h3>
         }
