@@ -1,0 +1,27 @@
+<form class="h-full w-full flex flex-col items-center justify-center">
+    <h1 class="text-3xl font-bold mb-5">Calculadora de IMC</h1>
+    <div class="w-3/6 bg-white p-10 rounded-lg shadow-md">
+        <div class="mb-5 w-full">
+            <label for="altura" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Altura
+                (m)</label>
+            <input type="number" id="altura"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                [formControl]="altura" required />
+        </div>
+        <div class="mb-5 ">
+            <label for="peso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso (kg)</label>
+            <input type="number" id="peso" [formControl]="peso"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                required />
+        </div>
+        <button (click)="calcularIMC()"
+            class="text-white  bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-300 dark:focus:ring-yellow-800">Clacula
+            tu IMC</button>
+
+        @if (imc){
+        <h3>Tu IMC es: {{imc}}</h3>
+        } @else {
+        <h3 class="text-red-500 mt-2">{{error}} </h3>
+        }
+    </div>
+</form>
