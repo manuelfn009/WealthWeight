@@ -58,4 +58,14 @@ export class CalculadoraComponent {
       console.log('Error');
     }
   }
+
+  getPesoIdeal() {
+    this.imc = 0;
+    this.error = '';
+    this.color = 'white';
+    this.bg_color = 'white';
+    this.altura.setValue('');
+    this.peso.setValue(''); 
+    
+  }
 }

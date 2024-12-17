@@ -21,6 +21,7 @@
     "flowbite": "^2.5.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "wealth-weight": "file:",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
