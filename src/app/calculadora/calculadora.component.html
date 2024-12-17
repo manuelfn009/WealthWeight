@@ -1,5 +1,15 @@
 <form class="h-full w-full flex flex-col items-center justify-center">
     <h1 class="text-3xl font-bold mb-5">Calculadora de IMC</h1>
+    <form class="max-w-sm mx-auto m-2 flex  ">
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona tu
+            genero</label>
+        <select id="countries" [formControl]="genero"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option selected>Elige tu genero</option>
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
+        </select>
+    </form>
     <div class="w-3/6 bg-white p-10 rounded-lg shadow-md">
         <div class="mb-5 w-full">
             <label for="altura" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Altura
@@ -9,23 +19,33 @@
                 [formControl]="altura" required />
         </div>
         <div class="mb-5 ">
-            <label for="peso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso (kg) <i class="text-xs text-gray-500">[Ej. 70]</i></label>
+            <label for="peso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso (kg) <i
+                    class="text-xs text-gray-500">[Ej. 70]</i></label>
             <input type="number" id="peso" [formControl]="peso"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
                 required />
         </div>
-        <button (click)="calcularIMC()"
+        <button (click)="calcularIMC(); getPesoIdeal(); getASC()"
             class="text-white  bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-300 dark:focus:ring-yellow-800">Calcula
             tu IMC</button>
-
         @if (imc){
-            <div class="mt-5 p-8 rounded-lg flex flex-col items-center" [style.color]="color" [style.background]="bg_color">
-                <h3 class="mt-2" > <strong>Tu IMC es: {{imc}}</strong></h3>
-                <h3>{{error}}</h3>
-            </div>
-        
+        <div class="mt-5 p-8 rounded-lg flex flex-col items-center" [style.color]="color" [style.background]="bg_color">
+            <h3 class="mt-2"> <strong>Tu IMC es: {{imc}}</strong></h3>
+            <h3>{{error}}</h3>
+        </div>
         } @else {
         <h3 class="text-red-500 mt-2">{{error}}</h3>
+        }
+        @if(pi){
+        <div class="mt-5 p-8 rounded-lg flex flex-col items-center bg-green-200">
+            <h3 class="mt-2 text-green-400"> <strong>Tu peso ideal es: {{pi}}kg</strong></h3>
+        </div>
+        }
+        @if(asc){
+        <div class="mt-5 p-8 rounded-lg flex flex-col items-center bg-green-300">
+            <h3 class="mt-2 text-green-600"> <strong>Tu área de superficie corporal (ASC) es:
+                    {{asc}}m<sup>2</sup></strong></h3>
+        </div>
         }
     </div>
 </form>

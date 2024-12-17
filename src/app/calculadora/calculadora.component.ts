@@ -11,16 +11,19 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 export class CalculadoraComponent {
   altura = new FormControl('', [Validators.required]);
   peso = new FormControl('', [Validators.required]);
+  genero = new FormControl('', [Validators.required]);
   imc = 0;
+  asc = 0;
   error = '';
   color = 'white';
   bg_color = 'white';
+  pi = 0;
+  alturaPulgadas:number = 0;
 
   calcularIMC() {
     //prevent default
     addEventListener('click', (event) => event.preventDefault());
-    this.imc = 0
-    if (this.altura.value && this.peso.value) {
+    if (this.altura.value && this.peso.value && this.genero.value) {
       if (+this.peso.value < 0 || +this.altura.value < 0) {
         this.error = "Debe ser valores positivos"
       } else {
@@ -60,12 +63,22 @@ export class CalculadoraComponent {
   }
 
   getPesoIdeal() {
-    this.imc = 0;
-    this.error = '';
-    this.color = 'white';
-    this.bg_color = 'white';
-    this.altura.setValue('');
-    this.peso.setValue(''); 
     
+      this.alturaPulgadas =  (+(this.altura?.value || 0)*100) / 2.54;
+      console.log(this.alturaPulgadas + " pulgadas");
+    
+
+      if (this.genero.value == 'Hombre') {
+        this.pi = +(50 + 2.3 * (this.alturaPulgadas - 60)).toFixed(2);
+      } else if (this.genero.value == 'Mujer') {
+        this.pi = +(45.5 + 2.3 * (this.alturaPulgadas - 60)).toFixed(2);
+      }
+    
+    
+
+  }
+
+  getASC(){
+    this.asc = +Math.sqrt(((+(this.altura?.value || 0)*100) * +(this.peso.value || 0))/3600).toFixed(2);
   }
 }
