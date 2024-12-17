@@ -18,7 +18,7 @@ export class CalculadoraComponent {
   color = 'white';
   bg_color = 'white';
   pi = 0;
-  alturaPulgadas:number = 0;
+  alturaPulgadas: number = 0;
 
   calcularIMC() {
     //prevent default
@@ -63,22 +63,25 @@ export class CalculadoraComponent {
   }
 
   getPesoIdeal() {
-    
-      this.alturaPulgadas =  (+(this.altura?.value || 0)*100) / 2.54;
+    if (this.altura.value && this.peso.value && this.genero.value) {
+      this.alturaPulgadas = (+(this.altura?.value || 0) * 100) / 2.54;
       console.log(this.alturaPulgadas + " pulgadas");
-    
+
 
       if (this.genero.value == 'Hombre') {
         this.pi = +(50 + 2.3 * (this.alturaPulgadas - 60)).toFixed(2);
       } else if (this.genero.value == 'Mujer') {
         this.pi = +(45.5 + 2.3 * (this.alturaPulgadas - 60)).toFixed(2);
       }
-    
-    
+    }
+
 
   }
 
-  getASC(){
-    this.asc = +Math.sqrt(((+(this.altura?.value || 0)*100) * +(this.peso.value || 0))/3600).toFixed(2);
+  getASC() {
+    if (this.altura.value && this.peso.value && this.genero.value) {
+      this.asc = +Math.sqrt(((+(this.altura?.value || 0) * 100) * +(this.peso.value || 0)) / 3600).toFixed(2);
+    }
+
   }
 }
