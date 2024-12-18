@@ -1,4 +1,4 @@
-<form class="h-full w-full flex flex-col items-center justify-center">
+<form class="h-full w-full flex flex-col items-center mt-10">
     <h1 class="text-3xl font-bold mb-5">Calculadora de IMC</h1>
     <form class="max-w-sm mx-auto m-2 flex  ">
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona tu
@@ -28,24 +28,27 @@
         <button (click)="calcularIMC(); getPesoIdeal(); getASC()"
             class="text-white  bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-300 dark:focus:ring-yellow-800">Calcula
             tu IMC</button>
-        @if (imc){
-        <div class="mt-5 p-8 rounded-lg flex flex-col items-center" [style.color]="color" [style.background]="bg_color">
-            <h3 class="mt-2 flex"> <strong>Tu IMC es: <a>{{imc}}</a></strong></h3>
-            <h3>{{error}}</h3>
+        <div class="mt-5 flex">
+            @if (imc){
+            <div class="mt-5 p-8 rounded-lg flex flex-col items-center" [style.color]="color"
+                [style.background]="bg_color">
+                <h3 class="mt-2 flex"> <strong>Tu IMC es: <a>{{imc}}</a></strong></h3>
+                <h3>{{error}}</h3>
+            </div>
+            } @else {
+            <h3 class="text-red-500 mt-2">{{error}}</h3>
+            }
+            @if(pi){
+            <div class="mt-5 p-8 rounded-lg flex items-center bg-green-200">
+                <h3 class="mt-2 text-green-400 items-center"> <strong>Tu peso ideal es: <a>{{pi}}</a> kg</strong></h3>
+            </div>
+            }
+            @if(asc){
+            <div class="mt-5 p-8 rounded-lg flex items-center bg-green-300">
+                <h3 class="mt-2 text-green-600 items-center"> <strong>Tu área de superficie corporal (ASC) es:
+                        <a>{{asc}}</a> m<sup>2</sup></strong></h3>
+            </div>
+            }
         </div>
-        } @else {
-        <h3 class="text-red-500 mt-2">{{error}}</h3>
-        }
-        @if(pi){
-        <div class="mt-5 p-8 rounded-lg flex items-center bg-green-200">
-            <h3 class="mt-2 text-green-400 items-center"> <strong>Tu peso ideal es: <a>{{pi}}</a> kg</strong></h3>
-        </div>
-        }
-        @if(asc){
-        <div class="mt-5 p-8 rounded-lg flex items-center bg-green-300">
-            <h3 class="mt-2 text-green-600 items-center"> <strong>Tu área de superficie corporal (ASC) es:
-                    <a>{{asc}}</a> m<sup>2</sup></strong></h3>
-        </div>
-        }
     </div>
 </form>
