@@ -32,7 +32,7 @@
             @if (imc){
             <div class="mt-5 p-8 rounded-lg flex flex-col items-center" [style.color]="color"
                 [style.background]="bg_color">
-                <h3 class="mt-2 flex"> <strong>Tu IMC es: <a>{{imc}}</a></strong></h3>
+                <h3 class="mt-2 flex"> <strong>Tu IMC es:</strong></h3> <h3>{{imc}}</h3>
                 <h3>{{error}}</h3>
             </div>
             } @else {
@@ -40,13 +40,13 @@
             }
             @if(pi){
             <div class="mt-5 p-8 rounded-lg flex items-center bg-green-200">
-                <h3 class="mt-2 text-green-400 items-center"> <strong>Tu peso ideal es: <a>{{pi}}</a> kg</strong></h3>
+                <h3 class="mt-2 text-green-400 items-center"> <strong>Tu peso ideal es: </strong></h3> <h3>{{pi}}</h3> kg
             </div>
             }
             @if(asc){
             <div class="mt-5 p-8 rounded-lg flex items-center bg-green-300">
-                <h3 class="mt-2 text-green-600 items-center"> <strong>Tu área de superficie corporal (ASC) es:
-                        <a>{{asc}}</a> m<sup>2</sup></strong></h3>
+                <h3 class="mt-2 text-green-600 items-center"> <strong>Tu área de superficie corporal (ASC) es: </strong></h3>
+                        <h3>{{asc}}</h3> m<sup>2</sup>
             </div>
             }
         </div>
